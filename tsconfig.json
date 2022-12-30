@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDirs": ["src"],
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "CommonJS",
+    // "moduleResolution": "commomjs",
+    "esModuleInterop": false,
+    "types": ["node"]
+  },
+  "include": ["./src"],
+  "exclude": ["./src/db/migrations"]
+}
