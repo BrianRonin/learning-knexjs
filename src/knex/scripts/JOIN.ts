@@ -7,7 +7,7 @@ const innerJoin = knex('users as u')
 console.log(innerJoin.toSQL().sql.toString())
 
 const leftJoin = knex('users as u')
-  .select('u.first_name', 'p.description')
+  .select('u.first_name', 'p.bio')
   .leftJoin('profiles as p', 'u.id', 'p.user_id')
 
 const rightJoin = knex('users as u')

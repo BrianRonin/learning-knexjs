@@ -6,11 +6,11 @@ const myQuery = knex.raw(
   `
 select id, first_name, email as uemail 
 from users
-where id = ?
+where id = ? and first_name = ??
 order by id ?
 limit 9,3;
   `,
-  ['users', 'ASC'],
+  ['users', 'ASC', 'Brian'],
 )
 
 console.log(myQuery.toSQL().sql.toString())

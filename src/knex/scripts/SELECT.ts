@@ -35,12 +35,21 @@ const selectManyTables = knex(
   knex.raw('users u, profiles p'),
 ).select('u.first_name', 'p.description')
 
-selectManyTables
-  .then((data) => {
-    console.log(data)
-  })
-  .finally(() => knex.destroy())
-
 console.log(
   selectManyTables.toSQL().sql.toString(),
 )
+
+// * Group
+
+const selectWithGroup = knex('users as u')
+  .select('u.first_name')
+  .leftJoin('profiles as p', 'u.id', 'p.user_id')
+  .count('u.id as total')
+  .groupBy('u.first_name')
+  .orderBy('total', 'desc')
+
+console.log(
+  selectWithGroup.toSQL().sql.toString(),
+)
+
+selectWithGroup.then((e) => console.log(e))
